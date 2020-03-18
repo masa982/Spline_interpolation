@@ -4,8 +4,8 @@ program main
 
   integer, parameter                                      :: double = selected_real_kind ( 9 )  
   integer :: i, j, k, nn
-  real :: hi, hi2, hi3
-  integer, allocatable, dimension ( : ) :: xx, yy, bb, chk
+  real ( kind = double ) :: hi, hi2, hi3
+  real ( kind = double ), allocatable, dimension ( : ) :: xx, yy, bb, chk
   real ( kind = double ), allocatable, dimension ( :, : ) :: AA, AA_inv
 
   nn = 11
@@ -21,16 +21,16 @@ program main
   open ( unit = 21, file = "data.dat", action = "read", status = "old" )
   
   do i = 1, nn
-     read ( unit = 21, fmt = ' ( 2i4 ) ' ) xx ( i ), yy ( i )
+     read ( unit = 21, fmt = ' ( 2f4.0 ) ' ) xx ( i ), yy ( i )
      if ( i == 1 ) then
         AA ( 1, 1 ) = 1
      else if ( 3 <= i .and. i <= nn ) then
         hi  = xx ( i - 1 ) - xx ( i - 2 )
         hi2 = xx ( i ) - xx ( i - 1 )
         hi3 = 2 * ( hi + hi2 )
-        AA ( i - 2, i - 1 ) = hi
+        AA ( i - 1, i - 2 ) = hi
         AA ( i - 1, i - 1 ) = hi3
-        AA ( i    , i - 1 ) = hi2
+        AA ( i - 1, i     ) = hi2
         if ( i == nn ) then
            AA ( nn, nn ) = 1
         end if
@@ -41,13 +41,46 @@ program main
   close ( unit = 21 )
      
   call sweeping ( AA, AA_inv, nn )
+
   do i = 1, nn
-     do k = 1, nn
-        chk ( i ) = chk ( i ) + AA ( i, k  ) * bb ( k )
+     do j = 1, nn
+        chk ( i ) = chk ( i ) + AA_inv ( i, j ) * bb ( j )
      end do
   end do
+  
+  print *, "chk"
+  do i = 1, nn
+     write ( unit = 6, fmt = ' ( f20.10 ) ', advance = "yes" ) chk ( i )
+  end do
 
-  print *, chk
+
+
+  
+!  print *, "AA_inv"
+!   do i = 1, nn
+!     do j = 1, nn
+!        if ( j /= nn ) then
+!           write ( unit = 6, fmt = ' ( f20.10 ) ', advance = "no"  ) AA_inv ( i, j )
+!        else
+!           write ( unit = 6, fmt = ' ( f20.10 ) ', advance = "yes" ) AA_inv ( i, j )
+!        end if
+!     end do
+!  end do
+!
+
+  
+!  do i = 1, nn
+!     do k = 1, nn
+!        chk ( i ) = chk ( i ) + AA_inv ( i, k ) * bb ( k )
+!     end do
+!  end do
+!  
+!  do i = 1, nn
+!     write ( unit = 6, fmt = ' ( i4 ) ', advance = "yes" ) chk ( i )
+!  end do
+!  
+!
+!  print *, chk
 
 end program main
 
