@@ -22,7 +22,8 @@ reference URL : https://en.wikipedia.org/wiki/Gaussian_elimination
  
 ```bash
 git clone https://github.com/hoge/~
-ifortran test2.f90
+gfortran -c sweep_sub.f90
+gofortran sweep_sub.o test2.f90
 ./a.out
 ```
  
