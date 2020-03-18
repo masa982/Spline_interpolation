@@ -28,6 +28,6 @@ if you want to interpolate your data file, Please change data.dat
  
 # Author
  
-Masaya Ito
+masa982
 
-Shogo Tanii
+valley-well
