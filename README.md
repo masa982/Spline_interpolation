@@ -26,5 +26,6 @@ if you want to interpolate your data file, Please change data.dat
  
 # Author
  
-Masaya Ito \n
+Masaya Ito
+
 Shogo Tanii
