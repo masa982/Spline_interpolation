@@ -6,7 +6,11 @@ where the interpolant is a special type of piecewise polynomial called a spline.
   
 # Requirement 
  
+ Nothing
+ 
 # Installation
+ 
+ Nothing
  
 # Usage
  
@@ -22,5 +26,5 @@ if you want to interpolate your data file, Please change data.dat
  
 # Author
  
-Masaya Ito
+Masaya Ito \n
 Shogo Tanii
