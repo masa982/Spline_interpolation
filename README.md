@@ -3,10 +3,12 @@ Spline interpolation using Fortran
 
 spline interpolation is a form of interpolation 
 where the interpolant is a special type of piecewise polynomial called a spline.
-  reference URL : https://en.wikipedia.org/wiki/Spline_interpolation
+
+reference URL : https://en.wikipedia.org/wiki/Spline_interpolation
 
 inverse matrix is calculated using "row reduction" also as known "Gaussian elimination".
-  reference URL : https://en.wikipedia.org/wiki/Gaussian_elimination 
+
+reference URL : https://en.wikipedia.org/wiki/Gaussian_elimination 
   
 # Requirement 
  
