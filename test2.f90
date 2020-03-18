@@ -1,16 +1,19 @@
 program main
+  use sweeping_sub
   implicit none
 
-  integer :: i, nn
+  integer, parameter                                      :: double = selected_real_kind ( 9 )  
+  integer :: i, j, k, nn
   real :: hi, hi2, hi3
-  integer, allocatable, dimension ( : ) :: xx, yy, bb
-  integer, allocatable, dimension ( :, : ) :: AA
+  integer, allocatable, dimension ( : ) :: xx, yy, bb, chk
+  real ( kind = double ), allocatable, dimension ( :, : ) :: AA, AA_inv
 
   nn = 11
   
   allocate ( xx ( 1:nn ) )
   allocate ( yy ( 1:nn ) ) 
   allocate ( bb ( 1:nn ) ) 
+  allocate ( chk ( 1:nn ) ) 
   allocate ( AA ( 1:nn, 1:nn ) ) 
   AA = 0
   bb = 0
@@ -37,9 +40,14 @@ program main
 
   close ( unit = 21 )
      
-  print *, AA (11, 10)
-  print *, bb
+  call sweeping ( AA, AA_inv, nn )
+  do i = 1, nn
+     do k = 1, nn
+        chk ( i ) = chk ( i ) + AA ( i, k  ) * bb ( k )
+     end do
+  end do
 
+  print *, chk
 
 end program main
 
