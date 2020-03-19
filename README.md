@@ -21,7 +21,7 @@ reference URL : https://en.wikipedia.org/wiki/Gaussian_elimination
 # Usage
  
 ```bash
-git clone https://github.com/hoge/~
+git clone https://github.com/masa982/Spline_interpolation.git
 gfortran -c sweep_sub.f90
 gofortran sweep_sub.o test2.f90
 ./a.out
@@ -29,7 +29,7 @@ gofortran sweep_sub.o test2.f90
 or
 
 ```bash
-git clone https://github.com/hoge/~
+git clone https://github.com/masa982/Spline_interpolation.git
 make
 ```
 
