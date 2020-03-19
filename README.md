@@ -26,6 +26,13 @@ gfortran -c sweep_sub.f90
 gofortran sweep_sub.o test2.f90
 ./a.out
 ```
+or
+
+```bash
+git clone https://github.com/hoge/~
+make
+```
+
  
 # Note
  
