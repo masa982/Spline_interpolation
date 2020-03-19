@@ -1,9 +1,9 @@
 #FC = ifort
 FC = gfortran
 
-TARGET = bspline.exe
+TARGET = spline._inter.exe
 
-OBJS = pastriangle.o bspline.o
+OBJS = sweep_sub.o main.o
 
 
 F90FLAGS =  

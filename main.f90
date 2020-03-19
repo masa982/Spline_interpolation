@@ -69,7 +69,6 @@ program main
      dx = dx + 0.1
   end do
 
-  print *, "x"
   open ( unit = 22, file = "data_result.dat", action = "write", status = "replace" )
   do i = 1, 100
      write ( unit = 22, fmt = ' ( 2f20.10 ) ' ) x ( i ), y ( i )
